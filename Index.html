@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gen-AI Based ECG Signal Classification</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" />
+  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gen-AI-powered ECG Signal Classification for enhanced clinical decision support.">
+  <meta name="keywords" content="ECG, Gen-AI, Cardiac Diagnostics, Machine Learning">
+  <meta name="author" content="SNS College of Technology">
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif, Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      animation: fadeIn 1s ease-in;
+      position: relative;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      background-color: white;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .college {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1e88e5;
+      margin-bottom: 8px;
+    }
+
+    .project {
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin: 10px 20px;
+      color: #444;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    button {
+      padding: 14px 30px;
+      font-size: 17px;
+      background: linear-gradient(90deg, #007bff, #00c6ff);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      margin-top: 20px;
+      width: auto;
+      max-width: 300px;
+      padding: 16px;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #0056b3, #0096c7);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
+    }
+
+    .preview {
+      max-width: 600px;
+      width: 90%;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+
+    #loader {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #loader img {
+      width: 50px;
+    }
+
+    /* Logo styling */
+    .logo-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .logo-container img {
+      width: 60px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    @media screen and (max-width: 600px) {
+      .college { font-size: 22px; }
+      .project { font-size: 18px; }
+      p { font-size: 15px; }
+      .logo-container img {
+        width: 45px;
+      }
+      button {
+        padding: 14px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="college">SNS College of Technology</div>
+    <div class="project">Gen-AI Based ECG Signal Classification</div>
+    <p>An GEN-AI-powered platform delivering precise, real-time ECG analysis and classification for enhanced clinical decision support. Transforming cardiac diagnostics with intelligent, data-driven insights.</p>
+
+    <button id="launchButton" onclick="redirectToApp()" aria-label="Launch the ECG Streamlit App">Launch Streamlit App</button>
+
+    <div id="loader">
+      <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading...">
+      <p>Launching app, please wait...</p>
+    </div>
+  </div>
+
+  <script>
+    function redirectToApp() {
+      const button = document.getElementById("launchButton");
+      button.disabled = true;
+      button.innerHTML = '<img src="https://i.gifer.com/ZZ5H.gif" alt="loading" width="20" /> Launching...';
+      document.getElementById("loader").style.display = "block";
+      setTimeout(() => {
+        window.location.href = "https://YOUR_EC2_PUBLIC_IP:8501";
+      }, 1000);
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(e => console.log("Service worker failed:", e));
+    }
+  </script>
+
+  <div class="logo-container">
+    <img src="https://www.snsgroups.com/sns.png" alt="SNS College Logo">
+  </div>
+
+</body>
+</html>
